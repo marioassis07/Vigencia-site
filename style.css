@@ -1,0 +1,826 @@
+/* Cores, fonte e medidas do manual da marca (Clarice Mazzêo, nov/2026) */
+:root {
+    --azul:          #0D2A4A; /* Azul Vigência: títulos, faixas e fundos */
+    --azul-claro:    #1A4170; /* tom de luz do miolo do escudo */
+    --vermelho:      #D91A2A; /* Vermelho Sinal: só botão principal e detalhes */
+    --vermelho-hover:#B8141F;
+    --aco:           #7D8B9B; /* Aço: linhas, ícones e o padrão damasco */
+    --nevoa:         #F2F5F8; /* fundo claro principal, junto com o branco */
+    --grafite:       #16202B; /* texto corrido */
+    --texto-suave:   #4F5D6E; /* texto de apoio, como nos slides */
+    --borda:         #DCE2E9;
+    --verde:         #0E8A43; /* só para status */
+    --ambar:         #F2A900; /* só para status */
+
+    --largura-max:   1200px;
+    --altura-cabecalho: 76px;
+    --arredondamento: 12px;
+
+    --fonte: 'Archivo', 'Segoe UI', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: #fff;
+    color: var(--grafite);
+    font-family: var(--fonte);
+    font-size: 18px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+:focus-visible { outline: 3px solid var(--vermelho); outline-offset: 3px; border-radius: 4px; }
+
+/* Texto que só o leitor de tela lê */
+.texto-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.area-central {
+    width: 100%;
+    max-width: var(--largura-max);
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* Hierarquia do manual: destaque, título, subtítulo, texto e rótulo */
+h1, h2, h3 { margin: 0; color: var(--azul); }
+h1 {
+    font-size: clamp(30px, 4.4vw, 58px);
+    font-weight: 800;
+    font-stretch: 112%;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+}
+h2 {
+    font-size: clamp(28px, 3.6vw, 44px);
+    font-weight: 700;
+    font-stretch: 108%;
+    line-height: 1.1;
+}
+h3 { font-size: 20px; font-weight: 600; line-height: 1.3; }
+
+/* Rótulo: caixa alta, mais largo, com a linha de sinal vermelha antes */
+.rotulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    color: var(--vermelho);
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: 115%;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+.rotulo::before {
+    content: "";
+    width: 24px;
+    height: 3px;
+    background: var(--vermelho);
+    flex-shrink: 0;
+}
+.rotulo-claro { color: #FF7A82; }
+.rotulo-claro::before { background: var(--vermelho); }
+.rotulo-pequeno { font-size: 12px; margin-bottom: 8px; }
+.rotulo-pequeno::before { display: none; }
+
+/* Botões totalmente arredondados: 52px no computador, 44px no celular */
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 0 28px;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.botao-vermelho { background: var(--vermelho); color: #fff; }
+.botao-vermelho:hover { background: var(--vermelho-hover); }
+.botao-contorno { border-color: var(--azul); color: var(--azul); }
+.botao-contorno:hover { background: var(--azul); color: #fff; }
+.botao-contorno-claro { border-color: rgba(255, 255, 255, 0.7); color: #fff; }
+.botao-contorno-claro:hover { background: #fff; color: var(--azul); }
+.botao-pequeno { min-height: 42px; padding: 0 20px; font-size: 15px; }
+.seta { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Cabeçalho */
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    border-bottom: 1px solid var(--borda);
+    transition: box-shadow 0.25s ease;
+}
+.cabecalho.rolado { box-shadow: 0 6px 24px rgba(13, 42, 74, 0.08); }
+.barra-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: var(--altura-cabecalho);
+}
+.logo img { height: 32px; width: auto; } /* acima do mínimo de 120px de largura do manual */
+.menu { display: flex; align-items: center; gap: 36px; }
+.links-menu {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.links-menu a {
+    position: relative;
+    display: block;
+    padding: 8px 0;
+    color: var(--azul);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+}
+/* Linha vermelha embaixo do link da seção que está na tela (o script.js marca com "atual") */
+.links-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: var(--vermelho);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+.links-menu a:hover::after,
+.links-menu a.atual::after { transform: scaleX(1); }
+
+/* Botão do menu no celular: três linhas que viram um X quando o menu abre */
+.botao-menu {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+.botao-menu-linhas,
+.botao-menu-linhas::before,
+.botao-menu-linhas::after {
+    position: absolute;
+    left: 11px;
+    width: 22px;
+    height: 2px;
+    background: var(--azul);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+.botao-menu-linhas { top: 21px; }
+.botao-menu-linhas::before,
+.botao-menu-linhas::after { content: ""; left: 0; }
+.botao-menu-linhas::before { top: -7px; }
+.botao-menu-linhas::after { top: 7px; }
+.botao-menu[aria-expanded="true"] .botao-menu-linhas { background: transparent; }
+.botao-menu[aria-expanded="true"] .botao-menu-linhas::before { transform: translateY(7px) rotate(45deg); }
+.botao-menu[aria-expanded="true"] .botao-menu-linhas::after { transform: translateY(-7px) rotate(-45deg); }
+
+/* Topo: texto sobre névoa à esquerda e o escudo no padrão damasco à direita */
+.topo {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    min-height: min(640px, calc(100vh - var(--altura-cabecalho)));
+    background: #E8ECF1;
+    scroll-margin-top: var(--altura-cabecalho);
+    /* o padrão damasco passa por toda a seção, mas não pode vazar para fora dela */
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+.topo-texto {
+    /* ocupa a altura toda da seção, para a camada de névoa não formar um retângulo no meio */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* o texto começa alinhado com a área central das outras seções */
+    padding: 64px 48px 64px max(32px, calc((100vw - var(--largura-max)) / 2 + 32px));
+    /* camada de névoa atrás do texto: as linhas continuam aparecendo, só mais suaves, e a leitura não é prejudicada */
+    background: linear-gradient(90deg, rgba(242, 245, 248, 0.9) 70%, rgba(242, 245, 248, 0));
+}
+.topo-texto > * { max-width: 640px; }
+.rotulo-curto { display: none; }
+.topo h1 { margin-bottom: 20px; font-size: clamp(30px, 3.9vw, 54px); }
+.topo-descricao {
+    margin: 0 0 32px;
+    color: var(--texto-suave);
+    font-size: 19px;
+    max-width: 540px;
+}
+.topo-botoes { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+.selos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: var(--texto-suave);
+    font-size: 14px;
+    font-weight: 500;
+}
+.selos li { display: flex; align-items: center; gap: 8px; }
+.selos svg { width: 18px; height: 18px; fill: none; stroke: var(--vermelho); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+/* Arte: o escudo fica no centro das linhas, que se expandem por toda a seção */
+.topo-arte {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+.topo-arte::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 2700px;
+    height: 2700px;
+    transform: translate(-50%, -50%);
+    background: url("imagens/padrao-topo.svg") center / contain no-repeat;
+    z-index: -1;
+    pointer-events: none;
+}
+.topo-arte img { width: clamp(150px, 16vw, 230px); }
+
+/* Seções */
+.secao { padding: 96px 0; scroll-margin-top: var(--altura-cabecalho); }
+.secao-nevoa { background: var(--nevoa); }
+.secao-azul { background: var(--azul); color: #fff; }
+.secao-azul h2,
+.secao-azul h3 { color: #fff; }
+.cabeca-secao { max-width: 720px; margin-bottom: 48px; }
+.cabeca-secao h2 { margin-bottom: 14px; }
+.cabeca-secao p:not(.rotulo) { margin: 0; color: var(--texto-suave); font-size: 19px; }
+.secao-azul .cabeca-secao p:not(.rotulo) { color: #C9D3DE; }
+
+/* O problema: números com a fonte embaixo */
+.grade-numeros {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.numero {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+}
+/* Linha de sinal em cima de cada número */
+.numero::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 28px;
+    height: 3px;
+    background: var(--vermelho);
+}
+.numero strong { font-size: clamp(36px, 4vw, 48px); font-weight: 800; font-stretch: 108%; line-height: 1; }
+.numero span { color: #DCE3EB; font-size: 16px; line-height: 1.45; }
+.numero small { color: #93A5B9; font-size: 13px; }
+.rodape-problema {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+.rodape-problema p { margin: 0; color: #DCE3EB; }
+
+/* A solução: tabela de comparação e etapas */
+.grade-solucao {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+}
+.tabela-comparacao { width: 100%; border-collapse: collapse; font-size: 17px; }
+.tabela-comparacao th {
+    padding: 0 16px 14px 0;
+    border-bottom: 2px solid var(--azul);
+    color: var(--texto-suave);
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: 115%;
+    letter-spacing: 0.14em;
+    text-align: left;
+    text-transform: uppercase;
+}
+.tabela-comparacao th:last-child { color: var(--vermelho); }
+.tabela-comparacao td {
+    padding: 18px 16px 18px 0;
+    border-bottom: 1px solid var(--borda);
+    color: var(--texto-suave);
+    vertical-align: top;
+}
+.tabela-comparacao td:last-child { color: var(--azul); font-weight: 600; }
+/* No computador as etapas sobem um pouco: acima delas só há espaço vazio, já que o título ocupa a parte esquerda */
+@media (min-width: 901px) { .etapas { margin-top: -24px; } }
+@media (min-width: 1200px) { .etapas { margin-top: -72px; } } /* em telas menores a frase do topo fica mais larga e encostaria nas etapas */
+.etapas h3 { margin-bottom: 6px; }
+.etapas > p { margin: 0 0 22px; color: var(--texto-suave); font-size: 17px; }
+/* As cinco camadas, do claro ao escuro, como no slide do conceito */
+.lista-etapas { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lista-etapas li {
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.lista-etapas li:nth-child(1) { background: #E6EBF0; color: var(--azul); }
+.lista-etapas li:nth-child(2) { background: #C9D2DC; color: var(--azul); }
+.lista-etapas li:nth-child(3) { background: #8E9BAA; color: #fff; }
+.lista-etapas li:nth-child(4) { background: #505E6E; color: #fff; }
+.lista-etapas li:nth-child(5) { background: var(--azul); color: #fff; }
+
+/* Recursos do app: cards claros com a linha de sinal */
+.grade-cartoes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.cartao {
+    position: relative;
+    padding: 28px 26px 26px;
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: var(--arredondamento);
+}
+.cartao::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 26px;
+    width: 34px;
+    height: 3px;
+    background: var(--vermelho);
+}
+.cartao h3 { margin-bottom: 8px; }
+.cartao p { margin: 0; color: var(--texto-suave); font-size: 16px; }
+.lista-status { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 4px 0 0; padding: 0; }
+/* Verde, âmbar e vermelho só aparecem como status */
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.status-verde { background: #E2F3E9; color: var(--verde); }
+.status-ambar { background: #FDF1D2; color: #7A5600; }
+.status-ambar::before { background: var(--ambar); }
+.status-vermelho { background: #FBE3E5; color: #A8121F; }
+.nota-app { margin: 28px 0 0; color: var(--texto-suave); font-size: 15px; }
+
+/* Painel tático: texto à esquerda e a imagem do painel à direita, como na landing */
+.grade-painel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); /* texto mais largo quebra menos linhas: o bloco todo (texto e imagem) cabe numa tela de notebook 1366x768 */
+    gap: 56px;
+    align-items: center;
+}
+.texto-painel .cabeca-secao { margin-bottom: 24px; }
+.texto-painel h2 { font-size: clamp(32px, 4vw, 50px); }
+.descricao-painel { margin: 0 0 24px; color: var(--texto-suave); font-size: 19px; }
+.lista-painel {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+}
+.lista-painel li {
+    position: relative;
+    padding-left: 24px;
+    color: var(--texto-suave);
+    font-size: 18px;
+    line-height: 1.55;
+}
+/* Marcador no Vermelho Sinal */
+.lista-painel li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--vermelho);
+}
+.lista-painel strong { color: var(--azul); font-weight: 600; }
+/* A imagem vai até a borda direita da tela, saindo da área central */
+#painel { overflow-x: clip; }
+.caixa-imagem-painel {
+    margin-right: calc(-1 * max(32px, (100vw - var(--largura-max)) / 2 + 32px));
+}
+/* A imagem tem fundo transparente, então o monitor fica direto sobre o fundo, sem bordas nem esfumado.
+   No computador ela tem exatamente a altura do bloco de texto: a caixa estica até a altura da linha da grade
+   (que é a do texto) e a imagem preenche essa altura, encostada na borda direita */
+.caixa-imagem-painel img { width: 100%; }
+@media (min-width: 901px) {
+    .grade-painel { align-items: stretch; }
+    .caixa-imagem-painel { position: relative; }
+    /* A imagem ocupa a caixa toda e se ajusta dentro dela sem distorcer, encostada no canto de cima à direita.
+       Com espaço, fica exatamente da altura do texto; em telas mais estreitas, diminui para não invadir o texto */
+    .caixa-imagem-painel img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: right center;
+    }
+}
+
+/* Para órgãos públicos */
+.grade-orgaos {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 56px;
+}
+.destaque-orgaos {
+    margin: 0;
+    padding-left: 28px;
+    border-left: 4px solid var(--vermelho);
+}
+.destaque-orgaos p {
+    margin: 0;
+    color: var(--azul);
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 600;
+    line-height: 1.35;
+}
+.caixas-orgaos { display: grid; gap: 12px; }
+.caixa-info { padding: 20px 22px; background: var(--nevoa); border-radius: var(--arredondamento); }
+.caixa-info p:not(.rotulo) { margin: 0; font-size: 16px; color: var(--grafite); }
+.diferenciais {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.diferenciais li {
+    padding-top: 18px;
+    border-top: 2px solid var(--azul);
+    color: var(--azul);
+    font-size: 18px;
+    font-weight: 600;
+}
+.diferenciais span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--vermelho);
+    font-size: 12px;
+    font-stretch: 115%;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* Faixas com o padrão, longe do texto: em cima na segurança e embaixo no problema */
+.secao-com-faixa { padding-top: 0; }
+.secao-faixa-embaixo { padding-bottom: 0; }
+.faixa-padrao {
+    height: 120px;
+    margin-bottom: 72px;
+    /* mostra a parte de cima do padrão, onde as linhas fazem as curvas (o centro é o vão do escudo) */
+    background: var(--azul) url("imagens/padrao-azul.svg") center 6% / cover no-repeat;
+}
+/* Na faixa de baixo, aparece a parte de baixo do padrão, com as curvas para o outro lado */
+.faixa-embaixo { margin: 72px 0 0; background-position: center 94%; }
+.lista-seguranca {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 48px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.lista-seguranca li { padding: 22px 0; border-top: 1px solid rgba(255, 255, 255, 0.18); }
+.lista-seguranca h3 { margin-bottom: 6px; font-size: 19px; }
+.lista-seguranca p { margin: 0; color: #C9D3DE; font-size: 16px; }
+
+/* Equipe */
+.grade-equipe {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.pessoa {
+    padding: 18px 20px;
+    border: 1px solid var(--borda);
+    border-radius: var(--arredondamento);
+    color: var(--azul);
+    font-size: 17px;
+    font-weight: 600;
+}
+.pessoa span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--aco);
+    font-size: 12px;
+    font-weight: 600;
+    font-stretch: 115%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.pessoa-destaque { background: var(--nevoa); border-color: transparent; }
+.pessoa-destaque span { color: var(--vermelho); }
+
+/* Contato */
+.chamada-contato {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+.chamada-contato h2 { margin-bottom: 12px; }
+.chamada-contato p:not(.rotulo) { margin: 0; color: var(--texto-suave); max-width: 620px; }
+
+/* Rodapé */
+.rodape { background: var(--azul); color: #C9D3DE; padding: 64px 0 28px; font-size: 15px; }
+/* Rodapé mais largo que o resto da página: o símbolo fica perto do canto esquerdo e os links perto do direito.
+   Ordem: símbolo à esquerda, fontes no meio, links à direita */
+.rodape .area-central { max-width: none; padding: 0 48px; }
+.colunas-rodape {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) auto;
+    grid-template-areas: "marca fontes links";
+    gap: 64px;
+}
+.marca-rodape { grid-area: marca; }
+.fontes { grid-area: fontes; }
+.links-rodape { grid-area: links; text-align: right; }
+.marca-rodape img { height: 34px; width: auto; margin-bottom: 16px; }
+.marca-rodape p { margin: 0; max-width: 320px; }
+.links-rodape { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.links-rodape a { color: #fff; text-decoration: none; }
+.links-rodape a:hover { text-decoration: underline; text-decoration-color: var(--vermelho); text-underline-offset: 4px; }
+.fontes { scroll-margin-top: var(--altura-cabecalho); }
+.fontes ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; }
+.base-rodape { margin-top: 48px; font-size: 13px; }
+.base-rodape p { margin: 0; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, 0.15); }
+
+/* Tela de abertura: só aparece com o JavaScript ativo (classe "js" no <html>).
+   Ela some sozinha pelo CSS, então nunca fica travada na frente da página */
+.tela-abertura { display: none; }
+.js .tela-abertura {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background: var(--azul);
+    animation: sumirAbertura 0.6s ease 1.7s forwards;
+}
+.marca-abertura {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+.tela-abertura img {
+    width: min(380px, 70vw); /* logo vertical, um pouco maior */
+    animation: aparecerLogo 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both;
+}
+/* Slogan da marca, embaixo da logo: entra logo depois dela */
+.slogan-abertura {
+    margin: 0;
+    color: #C9D3DE;
+    font-size: clamp(17px, 2vw, 22px);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-align: center;
+    animation: aparecerSlogan 0.6s ease 0.55s both;
+}
+/* A logo aparece crescendo de leve */
+@keyframes aparecerLogo {
+    from { opacity: 0; transform: scale(0.88); }
+    to   { opacity: 1; transform: scale(1); }
+}
+@keyframes aparecerSlogan {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+}
+/* Depois, a tela azul some e deixa a página à mostra */
+@keyframes sumirAbertura {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* Animação de entrada: o script.js coloca "animar" na seção (esconde) e depois "visivel" (mostra).
+   Cada elemento tem a sua --ordem, para entrarem um depois do outro */
+.animar .item-animado {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--ordem) * 80ms);
+}
+.animar .item-lado { transform: translateX(-28px); }   /* as camadas de verificação deslizam da esquerda */
+.animar .item-escala { transform: scale(0.85); transition-delay: 0s; } /* o escudo do topo cresce primeiro, e o padrão sai dele */
+.animar .item-direita { transform: translateX(32px); }   /* a imagem do painel entra pela direita */
+.visivel .item-animado { opacity: 1; transform: none; }
+
+/* O padrão damasco do topo entra a partir do escudo: um círculo de revelação nasce no centro e cresce
+   até cobrir a seção, como se as camadas se espalhassem para fora. No fim, o padrão fica inteiro */
+.animar .topo-arte::before {
+    opacity: 0;
+    -webkit-mask: radial-gradient(circle closest-side, #000 70%, transparent 100%) center / 0% 0% no-repeat;
+    mask: radial-gradient(circle closest-side, #000 70%, transparent 100%) center / 0% 0% no-repeat;
+    transition: opacity 0.6s ease 0.2s, -webkit-mask-size 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, mask-size 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+.visivel .topo-arte::before {
+    opacity: 1;
+    -webkit-mask-size: 150% 150%;
+    mask-size: 150% 150%; /* nesse tamanho o círculo já cobre a seção inteira, então tirar a máscara depois não muda nada */
+}
+
+/* Faixas de damasco do problema e da segurança: o padrão entra da esquerda para a direita.
+   Uma cortina azul cobre a faixa e encolhe para a direita, revelando o padrão. A faixa em si não é recortada,
+   senão o navegador acha que ela tem tamanho zero e o gatilho de "apareceu na tela" nunca dispara.
+   O script.js coloca "faixa-animar" (cortina fechada) e "faixa-visivel" (cortina abrindo) */
+.faixa-padrao { position: relative; }
+.faixa-animar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--azul);
+    transform-origin: right;
+    transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faixa-animar.faixa-visivel::after { transform: scaleX(0); }
+
+/* Damasco na seção do app inteira, no estilo da faixa do problema: só as ondas da parte de baixo do escudo.
+   O padrão é ampliado e encostado no fundo da seção, então o vão do meio do escudo fica acima, fora da seção.
+   Mais claro (opacidade) para não atrapalhar a leitura do título. Fica atrás de tudo: os cards brancos cobrem as linhas.
+   Entra de cima para baixo com a mesma cortina das faixas, só que na cor névoa */
+#app { position: relative; isolation: isolate; }
+#app::before,
+#app.faixa-animar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+#app::before {
+    /* padrao-ondas.svg é o padrão do escudo com traço mais fino: ampliado 3 vezes, a linha fica com cerca de 1px */
+    background: url("imagens/padrao-ondas.svg") center bottom / max(217%, 2900px) auto no-repeat;
+    opacity: 0.6;
+}
+#app.faixa-animar::after { background: var(--nevoa); transform-origin: bottom; transition-duration: 3s; } /* as ondas entram mais devagar que as faixas */
+#app.faixa-animar.faixa-visivel::after { transform: scaleY(0); }
+
+/* Tablet: grades com menos colunas */
+@media (max-width: 1024px) {
+    .grade-numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 32px; }
+    .grade-cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grade-equipe { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .colunas-rodape { grid-template-columns: 1fr auto; grid-template-areas: "marca links" "fontes fontes"; gap: 48px; }
+}
+
+/* Celular: os links viram menu e a arte desce para baixo do texto */
+@media (max-width: 900px) {
+    :root { --altura-cabecalho: 64px; }
+    .area-central { padding: 0 20px; }
+    .rodape .area-central { padding: 0 20px; }
+    .logo img { height: 28px; }
+    .botao-menu { display: block; }
+    .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 16px 20px 24px;
+        background: #fff;
+        border-bottom: 1px solid var(--borda);
+        box-shadow: 0 16px 24px rgba(13, 42, 74, 0.08);
+        display: none;
+    }
+    .menu.aberto { display: flex; }
+    .links-menu { flex-direction: column; gap: 0; }
+    .links-menu a { padding: 14px 0; border-bottom: 1px solid var(--borda); font-size: 17px; }
+    .links-menu a::after { display: none; }
+    .menu .botao-pequeno { min-height: 44px; }
+
+    .topo { grid-template-columns: 1fr; min-height: 0; }
+    .topo-texto {
+        padding: 40px 20px 36px;
+        background: linear-gradient(180deg, rgba(242, 245, 248, 0.9) 80%, rgba(242, 245, 248, 0));
+    }
+    .rotulo-longo { display: none; }
+    .rotulo-curto { display: inline; }
+    .quebra-larga { display: none; } /* no celular o título quebra sozinho */
+    .topo-arte { min-height: 300px; }
+    .topo-descricao { font-size: 17px; }
+    .botao { min-height: 44px; }
+    .topo-botoes .botao { flex: 1 1 100%; }
+
+    .secao { padding: 64px 0; }
+    .secao-com-faixa { padding-top: 0; } /* a faixa encosta no topo da seção também no celular */
+    .secao-faixa-embaixo { padding-bottom: 0; }
+    .grade-solucao,
+    .grade-orgaos,
+    .grade-painel { grid-template-columns: 1fr; gap: 40px; }
+    #app::before { background: url("imagens/padrao-escudo.svg") left center / auto max(100%, 1500px) no-repeat; } /* no celular a seção é alta e estreita: usa a lateral esquerda do escudo, onde as linhas descem sem vão */
+    .caixa-imagem-painel { order: -1; margin-right: -20px; } /* no celular a imagem vem antes do texto e também encosta na borda direita */
+    .lista-seguranca { grid-template-columns: 1fr; }
+    .diferenciais { grid-template-columns: 1fr; gap: 20px; }
+    .chamada-contato { flex-direction: column; align-items: flex-start; }
+    .faixa-padrao { height: 80px; margin-bottom: 48px; }
+    .faixa-embaixo { margin: 48px 0 0; }
+}
+
+@media (max-width: 560px) {
+    body { font-size: 17px; }
+    .grade-cartoes,
+    .grade-equipe,
+    .colunas-rodape { grid-template-columns: 1fr; grid-template-areas: "marca" "links" "fontes"; }
+    .links-rodape { align-items: flex-start; text-align: left; }
+    .grade-numeros { gap: 32px 20px; } /* continua em 2 × 2, como no manual */
+    .numero strong { font-size: 30px; }
+    .numero span { font-size: 14px; }
+    .tabela-comparacao { font-size: 15px; }
+    .chamada-contato .botao { width: 100%; }
+}
+
+/* Voltar ao topo: botão redondo branco com a seta do escudo em vermelho. No hover inverte (vermelho com a seta branca).
+   Só aparece depois que a pessoa desce além do topo (o script.js coloca a classe "aparecer") */
+.voltar-topo {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--borda);
+    box-shadow: 0 6px 18px rgba(13, 42, 74, 0.16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background 0.2s ease, border-color 0.2s ease;
+}
+.voltar-topo.aparecer { opacity: 1; visibility: visible; transform: none; }
+.voltar-topo svg { width: 36px; height: auto; margin-top: -2px; }
+.voltar-topo .seta-clara { fill: var(--vermelho); }
+.voltar-topo .seta-escura { fill: #A8121F; }
+.voltar-topo:hover,
+.voltar-topo:focus-visible { background: var(--vermelho); border-color: var(--vermelho); }
+.voltar-topo:hover path,
+.voltar-topo:focus-visible path { fill: #fff; }
+@media (max-width: 900px) {
+    .voltar-topo { width: 44px; height: 44px; right: 16px; bottom: 16px; }
+    .voltar-topo svg { width: 30px; }
+}

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vigência · O socorro chega no endereço certo</title>
+  <meta name="description" content="O Vigência trabalha junto com o 190, o 192 e o 193. Ele confirma quem está pedindo ajuda e entrega à central um chamado verificado, com localização exata e imagens.">
+  <meta name="theme-color" content="#0D2A4A">
+
+  <link rel="icon" href="imagens/simbolo-reduzido.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Archivo com os eixos de largura e peso, como pede o manual da marca -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Avisa o CSS, antes de desenhar a página, que o JavaScript está ativo (a tela de abertura só aparece nesse caso) -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Tela de abertura: fundo azul com a logo em branco, que some sozinha depois de alguns instantes -->
+  <div class="tela-abertura" aria-hidden="true">
+    <div class="marca-abertura">
+      <img src="imagens/logo-vertical-sobre-azul.svg" width="258" height="194" alt="">
+      <p class="slogan-abertura">Segurança na palma da mão</p>
+    </div>
+  </div>
+
+  <header class="cabecalho">
+    <div class="area-central barra-topo">
+      <a href="#inicio" class="logo" aria-label="Vigência, voltar ao início">
+        <img src="imagens/logo-horizontal.svg" width="436" height="82" alt="Vigência">
+      </a>
+
+      <button type="button" class="botao-menu" aria-expanded="false" aria-controls="menu-principal">
+        <span class="botao-menu-linhas" aria-hidden="true"></span>
+        <span class="texto-oculto">Abrir o menu</span>
+      </button>
+
+      <nav class="menu" id="menu-principal" aria-label="Menu principal">
+        <ul class="links-menu">
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#orgaos-publicos">Para órgãos públicos</a></li>
+          <li><a href="#seguranca">Segurança</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+        </ul>
+        <a href="#contato" class="botao botao-contorno botao-pequeno">Fale com a equipe</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Topo: o que o Vigência faz, logo de cara -->
+    <section class="topo" id="inicio">
+      <div class="topo-texto">
+        <!-- No celular o rótulo fica curto, como no manual -->
+        <p class="rotulo">
+          <span class="rotulo-longo">Polícia Militar · Bombeiros · SAMU</span>
+          <span class="rotulo-curto">PM · Bombeiros · SAMU</span>
+        </p>
+        <h1>O socorro chega <br class="quebra-larga">no endereço certo.</h1>
+        <p class="topo-descricao">
+          E sem perder tempo com trote. O cidadão pede ajuda em dois toques, a localização chega exata
+          e a central recebe só pedidos verificados.
+        </p>
+
+        <div class="topo-botoes">
+          <a href="#como-funciona" class="botao botao-vermelho">
+            Ver como funciona
+            <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#orgaos-publicos" class="botao botao-contorno">Sou de um órgão público</a>
+        </div>
+
+        <ul class="selos">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 9.5 4-1.2 7-5 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            Gratuito para o cidadão
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            Dados protegidos pela LGPD
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg>
+            Universidade de Vassouras
+          </li>
+        </ul>
+      </div>
+
+      <!-- Arte: as camadas do escudo se expandem no fundo. O padrão fica só aqui, sem texto em cima -->
+      <div class="topo-arte" aria-hidden="true">
+        <img src="imagens/simbolo.svg" width="102" height="127" alt="">
+      </div>
+    </section>
+
+    <!-- O problema: números oficiais, cada um com a fonte. O padrão fica numa faixa embaixo, sem texto -->
+    <section class="secao secao-azul secao-faixa-embaixo" id="problema" aria-labelledby="titulo-problema">
+      <div class="area-central">
+        <div class="cabeca-secao">
+          <p class="rotulo rotulo-claro">O problema</p>
+          <h2 id="titulo-problema">O trote ocupa a linha e tira a viatura da rua</h2>
+        </div>
+
+        <ul class="grade-numeros">
+          <li class="numero">
+            <strong>130 mil</strong>
+            <span>trotes ao 190 no Rio de Janeiro em 2025, média de 360 por dia</span>
+            <small>PMERJ, jan/2026</small>
+          </li>
+          <li class="numero">
+            <strong>+10%</strong>
+            <span>das ligações ao 190 no estado são trote</span>
+            <small>PMERJ, 2022</small>
+          </li>
+          <li class="numero">
+            <strong>R$ 1 bi</strong>
+            <span>por ano é o prejuízo estimado com trotes no Brasil</span>
+            <small>Senado Federal, 2015</small>
+          </li>
+          <li class="numero">
+            <strong>−89%</strong>
+            <span>de trotes no SAMU-DF desde 2021, com campanhas</span>
+            <small>SES-DF, 2025</small>
+          </li>
+        </ul>
+
+        <div class="rodape-problema">
+          <p>O caso do DF mostra que reduzir trote é possível.</p>
+          <a href="#fontes" class="botao botao-contorno-claro">Ver as fontes</a>
+        </div>
+      </div>
+      <div class="faixa-padrao faixa-embaixo" aria-hidden="true"></div>
+    </section>
+
+    <!-- A solução: a comparação do pitch em tabela e as etapas de verificação -->
+    <section class="secao" id="como-funciona" aria-labelledby="titulo-solucao">
+      <div class="area-central">
+        <div class="cabeca-secao">
+          <p class="rotulo">A solução</p>
+          <h2 id="titulo-solucao">Triagem inteligente desde o primeiro toque</h2>
+          <p>Cada pedido passa por uma checagem antes de chegar à central.</p>
+        </div>
+
+        <div class="grade-solucao">
+          <table class="tabela-comparacao">
+            <caption class="texto-oculto">Pedido de socorro hoje, por ligação, e com o Vigência</caption>
+            <thead>
+              <tr>
+                <th scope="col">Hoje, por ligação</th>
+                <th scope="col">Com o Vigência</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Endereço passado por voz</td><td>Localização exata por GPS</td></tr>
+              <tr><td>Só áudio, sem verificação</td><td>Foto, vídeo e áudio na hora</td></tr>
+              <tr><td>Triagem longa por telefone</td><td>Pedido em dois toques</td></tr>
+              <tr><td>Anonimato que facilita o trote</td><td>Identidade verificada e reputação</td></tr>
+            </tbody>
+          </table>
+
+          <div class="etapas">
+            <h3>Cada camada é uma etapa de verificação</h3>
+            <p>Todas levam ao mesmo ponto: o lugar exato de quem pediu ajuda.</p>
+            <ol class="lista-etapas">
+              <li>Identidade verificada</li>
+              <li>Localização exata</li>
+              <li>Foto, vídeo e áudio</li>
+              <li>Reputação do usuário</li>
+              <li>Análise da central</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos do app: cards claros, o vermelho fica só na linha de sinal -->
+    <section class="secao secao-nevoa" id="app" aria-labelledby="titulo-app">
+      <div class="area-central">
+        <div class="cabeca-secao">
+          <p class="rotulo">No app do cidadão</p>
+          <h2 id="titulo-app">Pedir ajuda leva dois toques</h2>
+        </div>
+
+        <ul class="grade-cartoes">
+          <li class="cartao">
+            <h3>Acionamento em dois toques</h3>
+            <p>Sem telefonar e sem esperar a linha desocupar.</p>
+          </li>
+          <li class="cartao">
+            <h3>Localização exata</h3>
+            <p>O celular envia o endereço sozinho, sem erro de relato.</p>
+          </li>
+          <li class="cartao">
+            <h3>Foto, vídeo e áudio</h3>
+            <p>A central vê o que acontece antes de enviar a equipe.</p>
+          </li>
+          <li class="cartao">
+            <h3>Identidade verificada</h3>
+            <p>Login e reputação ajudam a separar o trote do pedido real.</p>
+          </li>
+          <li class="cartao">
+            <h3>Sigilo tático</h3>
+            <p>Você acompanha o status. A posição da viatura fica protegida.</p>
+          </li>
+          <li class="cartao cartao-status" aria-label="Exemplo dos status de um pedido">
+            <h3>O status do pedido</h3>
+            <ul class="lista-status">
+              <li class="status status-verde">Pedido verificado</li>
+              <li class="status status-ambar">Em análise</li>
+              <li class="status status-vermelho">Emergência</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p class="nota-app">Gratuito para o cidadão · Dados protegidos pela LGPD</p>
+      </div>
+    </section>
+
+    <!-- Painel tático: a tela da central, no mesmo formato da landing. A imagem é a da landing, com fundo transparente e a borda de cima suavizada -->
+    <section class="secao secao-nevoa" id="painel" aria-labelledby="titulo-painel">
+      <div class="area-central">
+        <div class="grade-painel">
+          <div class="texto-painel">
+            <div class="cabeca-secao">
+              <p class="rotulo">Na central</p>
+              <h2 id="titulo-painel">Painel tático</h2>
+            </div>
+            <p class="descricao-painel">O painel é a tela da central. Ele mostra só os pedidos que passaram na triagem e atualiza
+              as informações em tempo real, para a equipe decidir rápido.</p>
+            <ul class="lista-painel">
+              <li><strong>Só chamados verificados.</strong> Trotes e chamadas mudas são filtrados antes de chegar à
+                central, e as linhas ficam livres para emergências reais.</li>
+              <li><strong>Visão em tempo real.</strong> Cada ocorrência aparece com tipo, localização por GPS e status
+                atualizado a cada segundo.</li>
+              <li><strong>Equipe e tempo de resposta.</strong> O painel mostra qual equipe foi acionada e há quanto tempo,
+                o que ajuda no despacho e no acompanhamento.</li>
+              <li><strong>Priorização por gravidade.</strong> Os casos mais críticos sobem na lista para serem atendidos
+                primeiro.</li>
+            </ul>
+          </div>
+
+          <div class="caixa-imagem-painel">
+            <img src="imagens/painel-tatico-suave.webp" loading="lazy" width="761" height="687" alt="Painel tático da central de emergências do Vigência">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Para órgãos públicos: quem contrata e como começar -->
+    <section class="secao" id="orgaos-publicos" aria-labelledby="titulo-orgaos">
+      <div class="area-central">
+        <div class="cabeca-secao">
+          <p class="rotulo">Para órgãos públicos</p>
+          <h2 id="titulo-orgaos">Trabalha junto com o 190, o 192 e o 193</h2>
+        </div>
+
+        <div class="grade-orgaos">
+          <blockquote class="destaque-orgaos">
+            <p>O Vigência confirma quem está pedindo ajuda e entrega à central um chamado verificado, com localização exata e imagens.</p>
+          </blockquote>
+
+          <div class="caixas-orgaos">
+            <div class="caixa-info">
+              <p class="rotulo rotulo-pequeno">Quem contrata</p>
+              <p>A Prefeitura, pela Secretaria de Segurança e Ordem Pública. PM e Bombeiros são do estado e entram por convênio.</p>
+            </div>
+            <div class="caixa-info">
+              <p class="rotulo rotulo-pequeno">Quem usa</p>
+              <p>O cidadão, de graça, pelo celular.</p>
+            </div>
+            <div class="caixa-info">
+              <p class="rotulo rotulo-pequeno">Como começar</p>
+              <p>Um piloto em parceria com a Universidade de Vassouras, sem custo para a Prefeitura e sem licitação.</p>
+            </div>
+          </div>
+        </div>
+
+        <ol class="diferenciais">
+          <li><span>Diferencial 1</span>PM, Bombeiros e SAMU em um só app</li>
+          <li><span>Diferencial 2</span>Verificação de identidade de quem pede ajuda</li>
+          <li><span>Diferencial 3</span>Reputação do usuário contra trotes</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Segurança e privacidade: o padrão aparece só na faixa de cima, sem texto -->
+    <section class="secao secao-azul secao-com-faixa" id="seguranca" aria-labelledby="titulo-seguranca">
+      <div class="faixa-padrao" aria-hidden="true"></div>
+      <div class="area-central">
+        <div class="cabeca-secao">
+          <p class="rotulo rotulo-claro">Segurança e privacidade</p>
+          <h2 id="titulo-seguranca">Seus dados protegidos em cada etapa</h2>
+          <p>O Vigência foi projetado de acordo com a LGPD (Lei nº 13.709/2018).</p>
+        </div>
+
+        <ul class="lista-seguranca">
+          <li>
+            <h3>Você autoriza e pode revogar</h3>
+            <p>Localização, câmera e microfone só com a sua permissão.</p>
+          </li>
+          <li>
+            <h3>Dados criptografados</h3>
+            <p>No envio e no armazenamento.</p>
+          </li>
+          <li>
+            <h3>Disponível 24 horas</h3>
+            <p>Meta de 99,9% de disponibilidade.</p>
+          </li>
+          <li>
+            <h3>O 190, o 192 e o 193 continuam</h3>
+            <p>O Vigência trabalha junto com as centrais.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Equipe -->
+    <section class="secao" id="equipe" aria-labelledby="titulo-equipe">
+      <div class="area-central">
+        <div class="cabeca-secao">
+          <p class="rotulo">Equipe</p>
+          <h2 id="titulo-equipe">Quem faz o Vigência</h2>
+          <p>Engenharia de Software · Universidade de Vassouras, Campus Saquarema.</p>
+        </div>
+
+        <ul class="grade-equipe">
+          <li class="pessoa pessoa-destaque"><span>Orientador</span>Prof. André Saraiva</li>
+          <li class="pessoa pessoa-destaque"><span>Idealizador</span>Gabriel Ascari</li>
+          <li class="pessoa pessoa-destaque"><span>Gerente de projeto</span>Alanderson Macedo</li>
+          <li class="pessoa"><span>Engenharia e desenvolvimento</span>Christiano Monteiro</li>
+          <li class="pessoa"><span>Engenharia e desenvolvimento</span>Ingrid Macedo</li>
+          <li class="pessoa"><span>Engenharia e desenvolvimento</span>José Ramiram</li>
+          <li class="pessoa"><span>Engenharia e desenvolvimento</span>Lucas Sant'Anna</li>
+          <li class="pessoa"><span>Engenharia e desenvolvimento</span>Marcelo Bahiense</li>
+          <li class="pessoa"><span>Engenharia e desenvolvimento</span>Mário Assis</li>
+          <li class="pessoa"><span>Engenharia e desenvolvimento</span>Priscila da Hora Barbosa</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contato: o próximo passo para prefeituras e órgãos parceiros -->
+    <section class="secao secao-nevoa" id="contato" aria-labelledby="titulo-contato">
+      <div class="area-central chamada-contato">
+        <div>
+          <p class="rotulo">Fale com a equipe</p>
+          <h2 id="titulo-contato">Quer levar o Vigência para a sua cidade?</h2>
+          <p>Conte para a gente qual órgão você representa. O piloto começa por uma parceria com a universidade.</p>
+        </div>
+        <!-- O e-mail da equipe ainda não foi definido: trocar o "mailto:" pelo endereço oficial -->
+        <a href="mailto:" class="botao botao-vermelho">Escrever para a equipe</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="area-central colunas-rodape">
+      <div class="marca-rodape">
+        <img src="imagens/logo-horizontal-sobre-azul.svg" width="228" height="54" alt="Vigência">
+        <p>Engenharia de Software · Universidade de Vassouras, Campus Saquarema</p>
+      </div>
+
+      <div class="fontes" id="fontes">
+        <p class="rotulo rotulo-claro rotulo-pequeno">Fontes dos números</p>
+        <ul>
+          <li>130 mil trotes ao 190 em 2025: PMERJ, via Diário do Rio (06/01/2026).</li>
+          <li>Mais de 10% das ligações ao 190 são trote: PMERJ, 2022.</li>
+          <li>R$ 1 bi por ano: Consultoria do Senado Federal, Boletim Legislativo nº 36 (2015), estimativa.</li>
+          <li>Queda de 89% nos trotes ao SAMU-DF desde 2021: SES-DF, 2025.</li>
+        </ul>
+      </div>
+
+      <nav class="links-rodape" aria-label="Menu do rodapé">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#orgaos-publicos">Para órgãos públicos</a>
+        <a href="#seguranca">Segurança</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#contato">Fale com a equipe</a>
+      </nav>
+    </div>
+
+    <div class="area-central base-rodape">
+      <p>© 2026 Vigência · Projeto acadêmico da Universidade de Vassouras</p>
+    </div>
+  </footer>
+  <!-- Voltar ao topo: a seta é a mesma do escudo da logo (copiada do simbolo.svg) -->
+  <a href="#inicio" class="voltar-topo" aria-label="Voltar ao topo da página">
+    <svg viewBox="1177.75 360.37 80.5 30" aria-hidden="true">
+      <path class="seta-clara" d="M1207.35 368.75 L1204.68 369.33 L1202.01 369.93 L1199.35 370.51 L1196.68 371.11 L1194.02 371.71 L1191.36 372.29 L1188.69 372.89 L1186.03 373.48 L1183.36 374.07 L1180.70 374.67 L1179.75 374.88 L1179.75 384.36 L1218.00 375.87 L1218.00 366.38 L1215.33 366.97 L1212.67 367.56 L1210.00 368.15 L1207.35 368.75 Z"/>
+      <path class="seta-escura" d="M1256.25 384.36 L1256.25 374.88 L1255.31 374.67 L1252.64 374.07 L1249.97 373.48 L1247.31 372.89 L1244.64 372.29 L1241.98 371.71 L1239.32 371.11 L1236.65 370.51 L1233.99 369.93 L1231.32 369.33 L1228.65 368.75 L1226.00 368.15 L1223.33 367.56 L1220.67 366.97 L1218.00 366.38 L1218.00 375.87 L1256.25 384.36 Z"/>
+    </svg>
+  </a>
+</body>
+</html>
